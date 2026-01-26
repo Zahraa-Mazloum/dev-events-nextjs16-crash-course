@@ -1,0 +1,62 @@
+import type { Metadata } from "next";
+import { Schibsted_Grotesk, Martian_Mono } from "next/font/google";
+import "./globals.css";
+import LightRays from '@/components/LightRays';
+import Navbar from "@/components/Navbar";
+
+
+const SchibstedGrotesk = Schibsted_Grotesk({
+  variable: "--font-schibsted-grotesk",
+  subsets: ["latin"],
+});
+
+const MartainMono = Martian_Mono({
+  variable: "--font-martain-mono",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "DevEvent",
+  description: "The Hub for Every Developer Event You Musn't Miss",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body
+        className={`${SchibstedGrotesk.variable} ${MartainMono.variable} antialiased`}
+      >
+        <Navbar />
+        {/* <div style={{ width: '100%', height: '600px', position: 'relative' }}> */}
+        <div className="absolute inset-0 top-0 z-[-1] min-h-screen">
+                <LightRays
+      raysOrigin="top-center"
+      raysColor="#5dfeca"
+      raysSpeed={0.5}
+      lightSpread={0.5}
+      rayLength={1.4}
+      followMouse={true}
+      mouseInfluence={0.02}
+      noiseAmount={0.0}
+      distortion={0.01}
+      // className="custom-rays"
+      pulsating={false}
+      fadeDistance={1}
+      saturation={1}
+  />
+        </div>
+
+{/* </div> */}
+<main>
+  
+          {children}
+
+</main> 
+      </body>
+    </html>
+  );
+}
