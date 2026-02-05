@@ -74,8 +74,15 @@ BookingSchema.pre('save', async function () {
 // Create index on eventId for optimized queries
 BookingSchema.index({ eventId: 1 });
 
+// Create index on createdAt for optimized sorting
+BookingSchema.index({ eventId: 1 , createdAt: -1 });
+
+
 // Compound index for faster duplicate booking checks
 BookingSchema.index({ eventId: 1, email: 1 });
+
+// Unique compound index to prevent duplicate bookings for the same event and email 
+BookingSchema.index({eventId: 1, email: 1} , {unique: true, name:'unique_event_email'});
 
 // Use existing model if it exists (prevents recompilation in development)
 const Booking = models.Booking || model<IBooking>('Booking', BookingSchema);
