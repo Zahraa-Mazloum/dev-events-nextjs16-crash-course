@@ -12,16 +12,14 @@ const SchibstedGrotesk = Schibsted_Grotesk({
   subsets: ["latin"],
 });
 
-const MartainMono = Martian_Mono({
-  variable: "--font-martain-mono",
+const MartianMono = Martian_Mono({
+  variable: "--font-martian-mono",
   subsets: ["latin"],
 });
-
 export const metadata: Metadata = {
   title: "DevEvent",
-  description: "The Hub for Every Developer Event You Musn't Miss",
+  description: "The Hub for Every Developer Event You Mustn't Miss",
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -30,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${SchibstedGrotesk.variable} ${MartainMono.variable} antialiased`}
+        className={`${SchibstedGrotesk.variable} ${MartianMono.variable} antialiased`}
       >
         <Navbar />
         {/* <div style={{ width: '100%', height: '600px', position: 'relative' }}> */}

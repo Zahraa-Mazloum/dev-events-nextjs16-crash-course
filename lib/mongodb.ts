@@ -43,15 +43,14 @@ if (!global.mongoose) {
  */
 async function connectDB(): Promise<typeof mongoose> {
   // Retrieve MongoDB URI from environment variables
-const MONGODB_URI = process.env.MONGODB_URI;
+  const MONGODB_URI = process.env.MONGODB_URI;
 
-// Validate that the MongoDB URI is defined
-if (!MONGODB_URI) {
-  throw new Error(
-    'Please define the MONGODB_URI environment variable inside .env.local'
-  );
-}
-
+  // Validate that the MongoDB URI is defined
+  if (!MONGODB_URI) {
+    throw new Error(
+      'Please define the MONGODB_URI environment variable inside .env.local'
+    );
+  }
   // Return existing connection if available
   if (cached.conn) {
     return cached.conn;
